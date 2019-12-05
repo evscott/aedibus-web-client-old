@@ -1,4 +1,4 @@
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/z3-e2c-client', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/aedibus-client', '.']
