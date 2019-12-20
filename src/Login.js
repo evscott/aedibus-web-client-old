@@ -1,8 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './Login';
-
 
 class LoginControl extends React.Component {
     constructor(props) {
@@ -56,10 +53,13 @@ class LoginControl extends React.Component {
 
         return (
         //returns actual page layout of components
-        <div>
+        <div style={{paddingLeft: 15}}>
           <Message isLoggedIn={isLoggedIn} />
           <Credentials onChange={handleChange} onSubmit={handleSubmit}/>
-          {button}
+          
+          <div>
+            {button}
+          </div>
         </div> 
       );
     }
@@ -70,7 +70,7 @@ class LoginControl extends React.Component {
     if(isLoggedIn) {
       return <h1>You are logged in!</h1>;
     }
-    return <h1>Pls log in!</h1>;
+    return <h1>Login:</h1>;
   }
 
   function LoginButton(props) {
@@ -88,12 +88,16 @@ class LoginControl extends React.Component {
               <div>
                 <label>
                     User:
-                    <input type="text" name="username" onChange={props.handleChange} />
                 </label>
+                <div>
+                  <input type="text" name="username" onChange={props.handleChange} />
+                </div>
               </div>
               <label>
                   Pass:
-                  <input type="password" name="password" onChange={props.handleChange} />
+                  <div>
+                    <input type="password" name="password" onChange={props.handleChange} />
+                  </div>
               </label>
           </form>
         </div>

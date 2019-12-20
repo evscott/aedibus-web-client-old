@@ -1,37 +1,21 @@
 import React from 'react';
 import './App.css';
-import {Route, Link} from 'react-router-dom';
-import LoginControl from './Login';
-import Assignments from './Assignments';
-import About from './About';
+import {Link} from 'react-router-dom';
+
 function App() {
   return (
-    <div className="App">
+    <div>
 
-      <header className="App-header">
+      <nav className="App-header">
         <h1>
-        Aedibus
+        <Link to="/">Aedibus</Link>
         </h1>
-        <h4>This is the HTML header</h4>
-        <Link to="/login">Login</Link>
-        <Link to="/assignments">Assignments</Link>
-        <Link to="/about">About</Link>
-      </header>
+        <p>This is the HTML header</p>
+        <Link to="/login" activeClassName="active">Login</Link>
+        <Link to="/a" activeClassName="active">Assignments</Link>
+        <Link to="/about" activeClassName="active">About</Link>
+      </nav>
 
-      <div style={{paddingLeft: 15}}>
-      <Route 
-        path="/assignments"
-        component={Assignments}
-      />
-      <Route
-        path="/login"
-        component={LoginControl}
-      />
-      <Route
-        path="/about"
-        component={About}
-      />
-      </div>
     </div>
   );
 }
