@@ -26,6 +26,21 @@ export function userReducer(state = initialState, action) {
                 firstName: action.firstName,
                 lastName: action.lastName
             };
+        case UserActions.LOGOUT_REQUEST:
+            return {
+                ...state,
+                lastUpdated: action.lastUpdated,
+                isFetching: action.isFetching
+            };
+        case UserActions.LOGOUT_SUCCESS:
+            return {
+                ...state,
+                lastUpdated: action.lastUpdated,
+                isAuthenticated: action.isAuthenticated,
+                isFetching: action.isFetching,
+                firstName: action.firstName,
+                lastName: action.lastName
+            };
         default:
             return state;
     }

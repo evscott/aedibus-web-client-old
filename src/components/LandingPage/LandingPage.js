@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './LandingPage.css';
-import LoginFormContainer from "../Auth/Login/LoginFormContainer";
+import LoginFormContainer from "../Auth/LoginForm/LoginFormContainer";
 
-export default class Home extends Component {
+export default class LandingPage extends Component {
     render() {
-        return (
-            <div className="landing">
-                <div className="title">
-                    <h1>
-                        <span className="red">aedibus</span>
-                    </h1>
-                </div>
-                <div className="flex-wrap-center">
-                    <LoginFormContainer/>
-                </div>
-            </div>
-        );
+        if (this.props.isAuthenticated && !this.props.isFetching)
+            return <Redirect to="/home"/>;
+        else return (
+                    <div className="flex-wrap-center">
+                        <LoginFormContainer/>
+                    </div>
+            );
     }
 }

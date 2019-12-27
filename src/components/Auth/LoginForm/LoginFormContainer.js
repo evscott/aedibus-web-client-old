@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLogin: (user) => {
+        Login: (user) => {
             dispatch(Login(user));
         }
     };

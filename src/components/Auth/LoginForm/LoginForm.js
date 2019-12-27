@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './LoginForm.css'
 import {Button, Form} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types'
 
 export default class LoginForm extends Component {
@@ -24,19 +25,16 @@ export default class LoginForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.onLogin({
+        this.props.Login({
             firstName: this.state.firstName,
             lastName: this.state.lastName
         });
-        console.log(this.props);
     }
 
 
     render() {
         return (
             <div>
-                <h1>Current user: {this.props.firstName} {this.props.lastName} </h1>
-                <h1>Last updated: {this.props.lastUpdated}</h1>
                 <Form.Group className={''}>
                     <Form.Control
                         placeholder={'first name'}
