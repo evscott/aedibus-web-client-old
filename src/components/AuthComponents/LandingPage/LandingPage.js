@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './LandingPage.css';
-import LoginFormContainer from "../Auth/LoginForm/LoginFormContainer";
+import LoginFormContainer from "../LoginForm/LoginFormContainer";
 
 export default class LandingPage extends Component {
     render() {

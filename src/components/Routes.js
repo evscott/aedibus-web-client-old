@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LandingPageContainer from "./LandingPage/LandingPageContainer";
-import DashboardContainer from "./Dashboard/DashboardContainer";
+import LandingPageContainer from "./AuthComponents/LandingPage/LandingPageContainer";
+import DashboardContainer from "./HomeComponents/Dashboard/DashboardContainer";
 
 export default () => (
     <Router>

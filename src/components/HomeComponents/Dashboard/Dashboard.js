@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
-import LogoutButtonContainer from "../Auth/LogoutButton/LogoutButtonContainer";
+import LogoutButtonContainer from "../../AuthComponents/LogoutButton/LogoutButtonContainer";
 
 export default class Dashboard extends Component {
     render() {
