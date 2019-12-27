@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './LandingPage.css';
+import LoginFormContainer from "../Auth/Login/LoginFormContainer";
 
 export default class Home extends Component {
     render() {
@@ -12,9 +12,7 @@ export default class Home extends Component {
                     </h1>
                 </div>
                 <div className="flex-wrap-center">
-                    <Link to="/login" className="btn btn-link">
-                        Login
-                    </Link>
+                    <LoginFormContainer/>
                 </div>
             </div>
         );
