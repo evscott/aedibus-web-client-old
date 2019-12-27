@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
-import LogoutButtonContainer from "../../AuthComponents/LogoutButton/LogoutButtonContainer";
+import LogoutButtonContainer from "../../Authentication/LogoutButton/LogoutButtonContainer";
+import AssignmentListContainer from "../../Assignment/AssignmentList/AssignmentListContainer";
 
 export default class Dashboard extends Component {
     render() {
@@ -10,6 +11,7 @@ export default class Dashboard extends Component {
                         <div>
                             <h1> Hello, { this.props.firstName } { this.props.lastName }. </h1>
                             <LogoutButtonContainer/>
+                            <AssignmentListContainer/>
                         </div>
                 );
     }

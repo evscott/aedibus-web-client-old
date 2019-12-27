@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './LoginForm.css'
 import {Button, Form} from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types'
 
 export default class LoginForm extends Component {
