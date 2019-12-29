@@ -1,23 +1,18 @@
-import React from 'react';
-import './App.css';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import Routes from './components/Routes';
+import HeaderContainer from "./components/Dashboard/Header/HeaderContainer";
+import FooterContainer from "./components/Dashboard/Footer/FooterContainer";
 
-function App() {
-  return (
-    <div>
-
-      <nav className="App-header">
-        <h1>
-        <Link to="/">Aedibus</Link>
-        </h1>
-        <p>This is the HTML header</p>
-        <Link to="/login" activeClassName="active">Login</Link>
-        <Link to="/a" activeClassName="active">Assignments</Link>
-        <Link to="/about" activeClassName="active">About</Link>
-      </nav>
-
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+        <div className="App">
+            <HeaderContainer/>
+            <Routes />
+            <FooterContainer/>
+        </div>
+    );
+  }
 }
 
 export default App;
