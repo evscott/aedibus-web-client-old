@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
-import LogoutButtonContainer from "../../Authentication/LogoutButton/LogoutButtonContainer";
+import './Dashboard.css'
 import AssignmentListContainer from "../../Assignment/AssignmentList/AssignmentListContainer";
+import LogoutButtonContainer from "../../Authentication/LogoutButton/LogoutButtonContainer";
 
 export default class Dashboard extends Component {
     render() {
@@ -9,9 +10,9 @@ export default class Dashboard extends Component {
                 return <Redirect to="/" />;
             else return (
                         <div>
-                            <h1> Hello, { this.props.firstName } { this.props.lastName }. </h1>
-                            <LogoutButtonContainer/>
+                            <h1 className={'center-text'}> Hello, { this.props.firstName } { this.props.lastName }. </h1>
                             <AssignmentListContainer/>
+                            <LogoutButtonContainer/>
                         </div>
                 );
     }

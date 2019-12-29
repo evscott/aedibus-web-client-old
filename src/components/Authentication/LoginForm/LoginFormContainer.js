@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import LoginForm from "./LoginForm";
 import {Login} from "../../../redux/actions/userAction";
+import {GetAssignments} from "../../../redux/actions/assignmentAction";
 
 const mapStateToProps = (state) => {
     return {
@@ -14,6 +15,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         Login: (user) => {
             dispatch(Login(user));
+        },
+        GetAssignments: () => {
+            dispatch(GetAssignments());
         }
     };
 };
