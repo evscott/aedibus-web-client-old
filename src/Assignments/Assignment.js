@@ -6,11 +6,11 @@ class Assignment extends Component{
     
     render(){
 
-        const assignments = this.props.data;
+        const assignments = Array.from(this.props.data);
 
         const assignmentNode = assignments.map((assignPage) => {
             return(
-                <div >
+                <div>
                     <Link
                         to={"/a/"+assignPage.id}
                         key={assignPage.id}
@@ -18,7 +18,7 @@ class Assignment extends Component{
                         {assignPage.name}
                     </Link>
                 </div>
-            )
+            );
         });
 
     return(

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import {Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import LoginControl from './Login';
 import Assignment from './Assignments/Assignment';
 import AssignDetail from './Assignments/AssignDetail';
@@ -36,19 +36,28 @@ ReactDOM.render(
     //Page routing can be kept in index file
 
     //BrowserRouter allows app to have nice webpaths w/o ugly hashing :^)
+    
+    //TODO: ADD A REDIRECT FOR INVALID ID NUMBERS!!!!
+
     <BrowserRouter>
         <App/>
         <Route component={App}>
             <Route 
                 exact path="/a"
                 render={
-                    (props) => <Assignment data={data}/>
+                    (props) => <Assignment {...props} data={data}/>
                 }
             />
             <Route
                exact path="/a/:id"
                 render={
-                    (props) => <AssignDetail data={data}/>
+                    (props) => <AssignDetail {...props} data={data}/>
+                }
+            />
+            <Route
+                exact path='/a/:id/:id'
+                render={
+                    (props) => <AssignDetail/>
                 }
             />
             <Route
