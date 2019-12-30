@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './LogoutButton.css'
 import { Button } from 'react-bootstrap';
 
-
-export default class LogoutButton extends Component {
+class LogoutButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +15,7 @@ export default class LogoutButton extends Component {
     handleLogout(e) {
         e.preventDefault();
         this.props.Logout();
+        this.props.history.push('/');
     }
 
     render() {
@@ -25,3 +26,5 @@ export default class LogoutButton extends Component {
         )
     }
 }
+
+export default withRouter(LogoutButton)
