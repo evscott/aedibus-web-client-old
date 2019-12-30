@@ -17,15 +17,15 @@ function getAssignmentsSuccess() {
         list: [
             {
                 id: 1,
-                title: 'Assignment 1',
+                title: 'AssignmentViewer 1',
             },
             {
                 id: 2,
-                title: 'Assignment 2',
+                title: 'AssignmentViewer 2',
             },
             {
                 id: 3,
-                title: 'Assignment 3',
+                title: 'AssignmentViewer 3',
             }
         ]
     }

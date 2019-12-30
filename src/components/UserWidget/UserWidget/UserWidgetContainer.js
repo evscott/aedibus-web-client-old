@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import AssignmentList from "./AssignmentList";
+import UserWidget from "./UserWidget";
 
 const mapStateToProps = (state) => {
     return {
-        assignments: state.assignments.list
+        isAuthenticated: state.user.isAuthenticated,
     };
 };
 
@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-const AssignmentListContainer = connect(
+const UserWidgetContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(AssignmentList);
+)(UserWidget);
 
-export default AssignmentListContainer;
+export default UserWidgetContainer;

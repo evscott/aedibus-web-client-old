@@ -2,7 +2,10 @@ import { connect } from 'react-redux';
 import Header from "./Header";
 
 const mapStateToProps = (state) => {
-    return {};
+    console.log('header container state:', state.user.isAuthenticated, localStorage.getItem('token'));
+    return {
+        isAuthenticated: state.user.isAuthenticated,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {

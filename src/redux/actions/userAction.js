@@ -46,6 +46,7 @@ export function Login(user) {
     return (dispatch) => {
         dispatch(loginRequest(user));
         dispatch(loginSuccess(user));
+        localStorage.setItem('token', 'abc');
     }
 }
 
@@ -53,5 +54,6 @@ export function Logout() {
     return (dispatch) => {
         dispatch(logoutRequest());
         dispatch(logoutSuccess());
+        localStorage.removeItem('token');
     }
 }
