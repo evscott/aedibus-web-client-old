@@ -20,7 +20,7 @@ class LogoutButton extends Component {
 
     render() {
         return (
-            <Button className={'btn btn-default'} onClick={this.handleLogout}>
+            <Button className={'btn btn-secondary'} onClick={this.handleLogout}>
                 Logout
             </Button>
         )

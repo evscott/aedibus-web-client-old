@@ -15,6 +15,6 @@ export default () => (
     <Switch>
         <Route exact path={"/"} component={LandingPageContainer}/>
         <AuthenticatedRoute exact path={"/home"} component={DashboardContainer}/>
-        <AuthenticatedRoute exact path={'/a/:aid'} component={AssignmentContainer}/>
+        <AuthenticatedRoute exact path={'/assignment'} component={AssignmentContainer}/>
     </Switch>
 );
