@@ -1,3 +1,5 @@
+import fetch from "cross-fetch";
+
 export const GET_ASSIGNMENTS_REQUEST = 'GET_ASSIGNMENTS_REQUEST';
 export const GET_ASSIGNMENTS_SUCCESS = 'GET_ASSIGNMENTS_SUCCESS';
 
@@ -9,31 +11,27 @@ function getAssignmentsRequest() {
     }
 }
 
-function getAssignmentsSuccess() {
+function getAssignmentsSuccess(list) {
     return {
         type: GET_ASSIGNMENTS_SUCCESS,
         lastUpdated: Date.now(),
         isFetching: false,
-        list: [
-            {
-                id: 1,
-                title: 'AssignmentViewer 1',
-            },
-            {
-                id: 2,
-                title: 'AssignmentViewer 2',
-            },
-            {
-                id: 3,
-                title: 'AssignmentViewer 3',
-            }
-        ]
+        list: list
     }
 }
 
 export function GetAssignments() {
     return (dispatch) => {
         dispatch(getAssignmentsRequest());
-        dispatch(getAssignmentsSuccess())
+
+        fetch('//127.0.0.1:8080/assignments', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'GET'
+        }).then((response) => response.json())
+            .then((json) => {
+                dispatch(getAssignmentsSuccess(json));
+        })
     }
 }

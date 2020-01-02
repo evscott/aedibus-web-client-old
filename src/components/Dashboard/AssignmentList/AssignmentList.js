@@ -12,17 +12,17 @@ export default class AssignmentList extends Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.setState({aid: e.target.name});
+        this.setState({assignment: e.target.name});
     }
 
     render() {
-        if (this.state.aid) {
-            return <Redirect to={`/a/${this.state.aid}`} />
+        if (this.state.assignment) {
+            return <Redirect to={`/a/${this.state.assignment}`} />
         }
         return (
             <ListGroup defaultActiveKey="#link1">
                 <div>
-                    {this.props.assignments.map(a => <ListGroup.Item key={a.id} name={a.id} action onClick={this.handleClick}> {a.title} </ListGroup.Item>)}
+                    {this.props.assignments.map(a => <ListGroup.Item key={a.id} name={a.name} action onClick={this.handleClick}> {a.name} </ListGroup.Item>)}
                 </div>
             </ListGroup>
         )
