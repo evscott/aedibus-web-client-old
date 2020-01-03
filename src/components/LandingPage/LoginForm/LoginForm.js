@@ -34,27 +34,27 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <div>
-                <Form.Group className={''}>
-                    <Form.Control
-                        placeholder={'first name'}
-                        type={'input'}
-                        name={'firstName'}
-                        value={this.state.firstName}
-                        onChange={this.handleChange}
-                    />
-                    <Form.Control
-                        placeholder={'last name'}
-                        type={'input'}
-                        name={'lastName'}
-                        value={this.state.lastName}
-                        onChange={this.handleChange}
-                    />
+            <Form.Group className={''}>
+                <Form.Control
+                    placeholder={'first name'}
+                    type={'input'}
+                    name={'firstName'}
+                    value={this.state.firstName}
+                    onChange={this.handleChange}
+                />
+                <Form.Control
+                    placeholder={'last name'}
+                    type={'input'}
+                    name={'lastName'}
+                    value={this.state.lastName}
+                    onChange={this.handleChange}
+                />
+                <div className={'float-right padding-top-sm'}>
                     <Button className={'btn btn-default'} type={'submit'} onClick={this.handleSubmit}>
                         Login
                     </Button>
-                </Form.Group>
-            </div>
+                </div>
+            </Form.Group>
         )
     }
 }

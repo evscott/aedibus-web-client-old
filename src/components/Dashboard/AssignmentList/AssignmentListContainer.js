@@ -3,7 +3,7 @@ import AssignmentList from "./AssignmentList";
 
 const mapStateToProps = (state) => {
     return {
-        assignments: state.assignments.list
+        assignments: state.assignments.list,
     };
 };
 
