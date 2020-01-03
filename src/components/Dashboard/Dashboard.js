@@ -24,7 +24,7 @@ class Dashboard extends Component {
             <div className={'width-half position-middle'}>
                 <AssignmentListContainer/>
                 <div className={'float-right padding-top-sm'}>
-                    <Button className={'btn-primary'} onClick={this.handleClick}>+</Button>
+                    <Button className={'btn-success'} onClick={this.handleClick}>+</Button>
                 </div>
             </div>
         );
