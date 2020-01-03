@@ -1,0 +1,21 @@
+.title h1 {
+    font-size: 50px;
+}
+
+span {
+    padding: 0 5px;
+}
+
+.red {
+    color: #f78888;
+}
+
+.width-half {
+    width: 50%;
+}
+
+.position-middle {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}

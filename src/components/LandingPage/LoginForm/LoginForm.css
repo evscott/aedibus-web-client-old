@@ -5,3 +5,13 @@
 .float-right {
     float: right;
 }
+
+.position-middle {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+
+.padding-top-sm{
+    padding-top: 5px;
+}

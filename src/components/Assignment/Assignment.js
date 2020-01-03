@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import './Assignment.css'
-import {GetReadme} from "../../services/AssignmentServices";
-import {Button} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
+import ReadmeContainer from "./Readme/ReadmeContainer";
+import CodeMirror from 'react-codemirror';
+import 'codemirror/lib/codemirror.css'
 
 class Assignment extends Component {
     constructor(props) {
@@ -10,18 +12,11 @@ class Assignment extends Component {
 
         this.state = {
             assignment: this.props.location.state.assignment,
+            code: ''
         };
 
         this.handleBack = this.handleBack.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
-    }
-
-    componentDidMount() {
-        GetReadme(this.state.assignment.name).then(res => {
-                this.setState({
-                    readme: res.content,
-                });
-            });
+        this.updateCode = this.updateCode.bind(this);
     }
 
     handleBack(e) {
@@ -29,17 +24,38 @@ class Assignment extends Component {
         this.props.history.push('/home');
     }
 
+    updateCode(newCode) {
+        this.setState({
+            code: newCode,
+        });
+    }
+
     render() {
+        let options = {
+            lineNumbers: true,
+            mode: 'javascript',
+        };
+
         return (
             <div>
-                <Button className={'btn btn-default'} onClick={this.handleBack}> Back </Button>
-                <h2 className={'horizontally-center'}>
-                    <span> {this.state.assignment.name} </span>
-                </h2>
-                <div className={'float-right padding-right-sm border-double width-half'}>
-                    <p>
-                        <span> {this.state.readme} </span>
-                    </p>
+                <div>
+                    <div className={'padding-left-sm'}>
+                        <Button className={'btn btn-light'} onClick={this.handleBack}> Back </Button>
+                    </div>
+                    <div>
+                        <h2 className={'horizontally-center'}>
+                            <span> {this.state.assignment.name} </span>
+                        </h2>
+                    </div>
+                </div>
+                <div className={'border-sm light-grey margin-bottom-sm'}>
+                    <ReadmeContainer assignmentName={this.state.assignment.name}/>
+                </div>
+                <div className={'border-sm'}>
+                    <CodeMirror className={'codemirror-height'} value={this.state.code} onChange={this.updateCode} options={options} />
+                </div>
+                <div className={'float-right padding-top-sm padding-bottom-sm padding-right-sm'}>
+                    <Button className={"btn-success"}>Submit</Button>
                 </div>
             </div>
         )

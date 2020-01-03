@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import LandingPageContainer from "./LandingPage/LandingPage/LandingPageContainer";
+import LandingPageContainer from "./LandingPage/LandingPageContainer";
 import DashboardContainer from "./Dashboard/DashboardContainer";
 import AssignmentContainer from "./Assignment/AssignmentContainer";
+import CreateAssignmentContainer from "./CreateAssignment/CreateAssignmentContainer";
 
 const AuthenticatedRoute = ({ component: Component, ...rest}) => {
     return <Route
@@ -16,5 +17,6 @@ export default () => (
         <Route exact path={"/"} component={LandingPageContainer}/>
         <AuthenticatedRoute exact path={"/home"} component={DashboardContainer}/>
         <AuthenticatedRoute exact path={'/assignment'} component={AssignmentContainer}/>
+        <AuthenticatedRoute exact path={"/assigment/create"} component={CreateAssignmentContainer}/>
     </Switch>
 );
