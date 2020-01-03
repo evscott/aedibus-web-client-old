@@ -23,7 +23,7 @@ export default class Readme extends Component {
 
     render() {
         return (
-            <div className={'readme-height'}>
+            <div className={'readme-height overflow light-grey border-sm'}>
                 <ReactMarkdown source={this.state.content} />
             </div>
         )

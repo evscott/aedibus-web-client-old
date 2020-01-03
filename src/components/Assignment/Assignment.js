@@ -5,20 +5,28 @@ import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "./Readme/ReadmeContainer";
 import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css'
+require('codemirror/mode/javascript/javascript');
+require('codemirror/theme/material.css');
 
 class Assignment extends Component {
     constructor(props) {
         super(props);
 
+        console.log('in component', this.props.firstName);
+
         this.state = {
             assignment: this.props.location.state.assignment,
-            code: '',
+            code: `// @author \n// @date \n`,
             readOnly: false,
             mode: 'javascript',
         };
 
         this.handleBack = this.handleBack.bind(this);
         this.updateCode = this.updateCode.bind(this);
+    }
+
+    componentDidMount() {
+        console.log('component mounted', this.props);
     }
 
     handleBack(e) {
@@ -36,7 +44,8 @@ class Assignment extends Component {
         let options = {
             lineNumbers: true,
             readOnly: this.state.readOnly,
-            mode: this.state.mode
+            mode: this.state.mode,
+            theme: 'material',
         };
 
         return (
@@ -51,11 +60,15 @@ class Assignment extends Component {
                         </h2>
                     </div>
                 </div>
-                <div className={'border-sm light-grey margin-bottom-sm'}>
+                <div className={'margin-bottom-sm'}>
                     <ReadmeContainer assignmentName={this.state.assignment.name}/>
                 </div>
                 <div className={'border-sm'}>
-                    <CodeMirror className={'create-assignment-height'} value={this.state.code} onChange={this.updateCode} options={options} />
+                    <CodeMirror
+                        className={'create-assignment-height'}
+                        value={this.state.code}
+                        onChange={this.updateCode}
+                        options={options} />
                 </div>
                 <div className={'float-right padding-top-sm padding-bottom-sm padding-right-sm'}>
                     <Button className={"btn-success"}>Submit</Button>

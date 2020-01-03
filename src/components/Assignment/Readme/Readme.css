@@ -3,9 +3,14 @@
 }
 
 .readme-height {
-    height: 400px;
+    min-height: 400px;
+    height: 100%;
 }
 
 .padding-right-sm {
     padding-right: 5px;
+}
+
+.overflow {
+    overflow: auto;
 }

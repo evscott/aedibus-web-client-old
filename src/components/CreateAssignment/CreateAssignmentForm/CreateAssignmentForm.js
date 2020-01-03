@@ -3,10 +3,12 @@ import './CreateAssignmentForm.css';
 import {Button, Form} from "react-bootstrap";
 import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css'
+import {CreateAssignment} from "../../../services/AssignmentServices";
 
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/markdown/markdown');
+require('codemirror/theme/material.css');
 
 export default class CreateAssignmentForm extends Component {
     constructor(props) {
@@ -14,15 +16,14 @@ export default class CreateAssignmentForm extends Component {
 
         this.state = {
             assignmentName: '',
-            readme: '',
-            code: '',
+            readmeContent: '',
             readOnly: false,
             mode: 'markdown',
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.updateCode = this.updateCode.bind(this);
+        this.updateContent = this.updateContent.bind(this);
     }
 
     handleChange(e) {
@@ -33,11 +34,14 @@ export default class CreateAssignmentForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        CreateAssignment(this.state.assignmentName, this.state.readmeContent).then(res => {
+           console.log('result:', res);
+        });
     }
 
-    updateCode(newCode) {
+    updateContent(newContent) {
         this.setState({
-            code: newCode,
+            readmeContent: newContent,
         });
     }
 
@@ -45,7 +49,8 @@ export default class CreateAssignmentForm extends Component {
         let options = {
             lineNumbers: true,
             readOnly: this.state.readOnly,
-            mode: this.state.mode
+            mode: this.state.mode,
+            theme: 'material'
         };
 
         return (
@@ -61,7 +66,7 @@ export default class CreateAssignmentForm extends Component {
                 </div>
 
                 <div className={'border-sm'}>
-                    <CodeMirror className={'create-assignment-height'} value={this.state.code} onChange={this.updateCode} options={options} />
+                    <CodeMirror className={'create-assignment-height'} value={this.state.readmeContent} onChange={this.updateContent} options={options} />
                 </div>
 
                 <div className={'float-right padding-top-sm padding-right-sm'}>
