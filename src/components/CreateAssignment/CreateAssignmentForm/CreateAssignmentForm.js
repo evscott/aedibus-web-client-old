@@ -4,6 +4,10 @@ import {Button, Form} from "react-bootstrap";
 import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css'
 
+require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/xml/xml');
+require('codemirror/mode/markdown/markdown');
+
 export default class CreateAssignmentForm extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +15,9 @@ export default class CreateAssignmentForm extends Component {
         this.state = {
             assignmentName: '',
             readme: '',
-            code: ''
+            code: '',
+            readOnly: false,
+            mode: 'javascript',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,10 +42,10 @@ export default class CreateAssignmentForm extends Component {
     }
 
     render() {
-
         let options = {
             lineNumbers: true,
-            mode: 'javascript',
+            readOnly: this.state.readOnly,
+            mode: this.state.mode
         };
 
         return (

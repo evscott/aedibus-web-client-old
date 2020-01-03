@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Assignment.css'
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "./Readme/ReadmeContainer";
 import CodeMirror from 'react-codemirror';
@@ -12,7 +12,9 @@ class Assignment extends Component {
 
         this.state = {
             assignment: this.props.location.state.assignment,
-            code: ''
+            code: '',
+            readOnly: false,
+            mode: 'javascript',
         };
 
         this.handleBack = this.handleBack.bind(this);
@@ -33,7 +35,8 @@ class Assignment extends Component {
     render() {
         let options = {
             lineNumbers: true,
-            mode: 'javascript',
+            readOnly: this.state.readOnly,
+            mode: this.state.mode
         };
 
         return (
@@ -52,7 +55,7 @@ class Assignment extends Component {
                     <ReadmeContainer assignmentName={this.state.assignment.name}/>
                 </div>
                 <div className={'border-sm'}>
-                    <CodeMirror className={'codemirror-height'} value={this.state.code} onChange={this.updateCode} options={options} />
+                    <CodeMirror className={'create-assignment-height'} value={this.state.code} onChange={this.updateCode} options={options} />
                 </div>
                 <div className={'float-right padding-top-sm padding-bottom-sm padding-right-sm'}>
                     <Button className={"btn-success"}>Submit</Button>
