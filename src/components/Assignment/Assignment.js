@@ -33,8 +33,14 @@ class Assignment extends Component {
         return (
             <div>
                 <Button className={'btn btn-default'} onClick={this.handleBack}> Back </Button>
-                <h1> Assignment name: {this.state.assignment.name} </h1>
-                <h1> Readme contents: {this.state.readme} </h1>
+                <h2 className={'horizontally-center'}>
+                    <span> {this.state.assignment.name} </span>
+                </h2>
+                <div className={'float-right padding-right-sm border-double width-half'}>
+                    <p>
+                        <span> {this.state.readme} </span>
+                    </p>
+                </div>
             </div>
         )
     }

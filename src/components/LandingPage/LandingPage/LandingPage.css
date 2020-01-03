@@ -1,11 +1,15 @@
-.title h1{
+.title h1 {
     font-size: 50px;
 }
 
-span{
+span {
     padding: 0 5px;
 }
 
-.red{
+.red {
     color: #f78888;
+}
+
+.vertical-middle {
+    vertical-align: center;
 }

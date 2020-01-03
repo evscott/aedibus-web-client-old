@@ -34,7 +34,7 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'width-half'}>
                 <Form.Group className={''}>
                     <Form.Control
                         placeholder={'first name'}
@@ -50,7 +50,7 @@ export default class LoginForm extends Component {
                         value={this.state.lastName}
                         onChange={this.handleChange}
                     />
-                    <Button className={'btn btn-default'} type={'submit'} onClick={this.handleSubmit}>
+                    <Button className={'btn btn-default float-right'} type={'submit'} onClick={this.handleSubmit}>
                         Login
                     </Button>
                 </Form.Group>

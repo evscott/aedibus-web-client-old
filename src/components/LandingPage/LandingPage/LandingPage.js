@@ -9,7 +9,9 @@ export default class LandingPage extends Component {
             return <Redirect to="/home"/>;
         else return (
                     <div className="flex-wrap-center">
-                        <LoginFormContainer/>
+                        <div className={'vertical-middle'}>
+                            <LoginFormContainer/>
+                        </div>
                     </div>
             );
     }

@@ -22,15 +22,13 @@ export default class AssignmentList extends Component {
             }} />
         }
         return (
-            <ListGroup defaultActiveKey="#link1">
-                <div>
-                    {
-                        this.props.assignments.map(a =>
-                            <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.handleClick(a)}>
-                                {a.name}
-                            </ListGroup.Item>)
-                    }
-                </div>
+            <ListGroup defaultActiveKey="#link1" className={'width-half'}>
+                {
+                    this.props.assignments.map(a =>
+                        <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.handleClick(a)}>
+                            {a.name}
+                        </ListGroup.Item>)
+                }
             </ListGroup>
         )
     }

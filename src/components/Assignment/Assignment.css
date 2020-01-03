@@ -1,0 +1,23 @@
+.horizontally-center {
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+.border-double {
+    border-style: double;
+}
+
+.padding-right-sm {
+    padding-right: 10px;
+}
+
+.width-half {
+    width: 50%;
+}
+
+.height-lg {
+    height: 500px;
+}
