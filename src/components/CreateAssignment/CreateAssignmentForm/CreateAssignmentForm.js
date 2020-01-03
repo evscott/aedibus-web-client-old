@@ -17,7 +17,7 @@ export default class CreateAssignmentForm extends Component {
             readme: '',
             code: '',
             readOnly: false,
-            mode: 'javascript',
+            mode: 'markdown',
         };
 
         this.handleChange = this.handleChange.bind(this);
