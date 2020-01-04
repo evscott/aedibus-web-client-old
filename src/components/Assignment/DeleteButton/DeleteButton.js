@@ -9,13 +9,10 @@ class DeleteButton extends Component {
     constructor(props) {
         super(props);
 
-        console.log('assignmentName:', this.props.assignmentName);
-
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(e) {
-        e.preventDefault();
+    handleClick() {
         DeleteAssignment(this.props.assignmentName).then(res => {
             console.log('result:', res);
             this.props.history.push('/home');

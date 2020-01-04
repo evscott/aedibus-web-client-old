@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './CreateAssignment.css';
 import {Button} from "react-bootstrap";
+import { CreateAssignment as CreateAssignmentFunc } from "../../services/AssignmentServices";
 import CreateAssignmentFormContainer from "./CreateAssignmentForm/CreateAssignmentFormContainer";
 import BackButtonContainer from "../Shared/BackButton/BackButtonContainer";
 import TextEditorContainer from "../Shared/TextEditor/TextEditorContainer";
@@ -23,13 +24,12 @@ export default class CreateAssignment extends Component {
 
     updateContent(newContent) {
         this.setState({
-            content: newContent,
+            readmeContent: newContent,
         });
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        CreateAssignment(this.state.assignmentName, this.state.readmeContent).then(res => {
+    handleSubmit() {
+        CreateAssignmentFunc(this.state.assignmentName, this.state.readmeContent).then(res => {
             console.log('result:', res);
             this.props.history.push('/home');
         });
