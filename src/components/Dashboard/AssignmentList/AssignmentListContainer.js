@@ -4,8 +4,7 @@ import AssignmentList from "./AssignmentList";
 const mapStateToProps = (state) => {
     return {
         assignments: state.assignments.list,
-        userFirstName: state.user.firstName,
-        userLastName: state.user.lastName,
+        firstName: state.user.firstName,
     };
 };
 

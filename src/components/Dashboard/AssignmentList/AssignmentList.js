@@ -1,45 +1,61 @@
 import React, { Component } from 'react'
-import { ListGroup } from "react-bootstrap";
-import { Redirect } from 'react-router-dom';
+import {Button, ListGroup} from "react-bootstrap";
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import './AssignmentList.css'
 
-export default class AssignmentList extends Component {
+class AssignmentList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             assignments: [],
         };
 
-        this.handleClick = this.handleClick.bind(this);
+        this.handleCreateAssignment = this.handleCreateAssignment.bind(this);
+        this.handleAssignmentClick = this.handleAssignmentClick.bind(this);
     }
 
-    handleClick(target) {
-        this.setState({assignment: target});
+    handleCreateAssignment() {
+        this.props.history.push('/assigment/create');
+    }
+
+    handleAssignmentClick(assignment) {
+        if (this.props.firstName === "Eliot") {
+            this.props.toggleListForward(assignment);
+        }
+
+        if (this.props.firstName !== "Eliot")
+            this.props.history.push({
+                pathname: `/assignment`,
+                state: {
+                    assignment: assignment,
+                    firstName: this.props.firstName,
+                    lastName: this.props.lastName,
+                }
+            });
     }
 
     render() {
-        if (this.state.assignment) {
-            return <Redirect to={{
-                pathname: `/assignment`,
-                state: {
-                    assignment: this.state.assignment,
-                    userFirstName: this.props.userFirstName,
-                    userLastName: this.props.userLastName,
-                }
-            }} />
-        }
         return (
-            <ListGroup defaultActiveKey="#link1">
-                {
-                    this.props.assignments.map(a =>
-                        <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.handleClick(a)}>
-                            {a.name}
-                        </ListGroup.Item>)
-                }
-            </ListGroup>
+            <div>
+                <ListGroup defaultActiveKey="#link1">
+                    {
+                        this.props.assignments.map(a =>
+                            <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.handleAssignmentClick(a)}>
+                                {a.name}
+                            </ListGroup.Item>)
+                    }
+                </ListGroup>
+                <div className={'float-right padding-top-sm'}>
+                    <Button className={'btn-success'} onClick={this.handleCreateAssignment}>+</Button>
+                </div>
+            </div>
         )
     }
 }
 
 AssignmentList.propTypes = {
+    toggleListForward: PropTypes.func.isRequired,
 };
+
+export default withRouter(AssignmentList);

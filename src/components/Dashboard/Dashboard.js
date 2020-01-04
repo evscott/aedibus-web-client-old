@@ -1,38 +1,55 @@
 import React, {Component} from "react";
-import './Dashboard.css'
 import { withRouter } from 'react-router-dom';
+import './Dashboard.css'
 import AssignmentListContainer from "./AssignmentList/AssignmentListContainer";
-import {Button} from "react-bootstrap";
+import DropboxListContainer from "./DropboxList/DropboxListContainer";
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            createAssignment: false,
+            level: 0,
+            assignment: null,
         };
 
-        this.handleClick = this.handleClick.bind(this);
+        this.toggleListForward = this.toggleListForward.bind(this);
+        this.toggleListBackward = this.toggleListBackward.bind(this);
     }
 
     componentDidMount() {
         this.props.GetAssignments();
     }
 
-    handleClick() {
-        this.props.history.push('/assigment/create');
+    toggleListForward(obj) {
+        this.setState({level: this.state.level + 1});
+
+        if (this.state.level === 1) {
+            this.setState({
+                assignment: obj,
+            })
+        }
+    }
+
+    toggleListBackward() {
+        this.setState({level: this.state.level - 1} )
+    }
+
+
+    getList() {
+        if (this.state.level === 0)
+            return <AssignmentListContainer toggleListForward={this.toggleListForward}/>;
+        if (this.state.level === 1)
+            return <DropboxListContainer toggleListBackward={this.toggleListBackward}/>;
     }
 
     render() {
         return (
             <div className={'width-half position-middle'}>
-                <AssignmentListContainer/>
-                <div className={'float-right padding-top-sm'}>
-                    <Button className={'btn-success'} onClick={this.handleClick}>+</Button>
-                </div>
+                {this.getList()}
             </div>
-        );
+        )
     }
 }
 
-export default  withRouter(Dashboard);
+export default withRouter(Dashboard);
