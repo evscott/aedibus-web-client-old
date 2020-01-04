@@ -18,8 +18,8 @@ export default class TextEditor extends Component {
             <div className={'border-sm'}>
                 <CodeMirror
                     className={'text-editor-height'}
-                    value={this.props.code}
-                    onChange={this.props.updateCode}
+                    value={this.props.content}
+                    onChange={this.props.updateContent}
                     options={options} />
             </div>
         )
@@ -28,6 +28,6 @@ export default class TextEditor extends Component {
 
 TextEditor.propTypes = {
     mode: PropTypes.string.isRequired,
-    code: PropTypes.string.isRequired,
-    updateCode: PropTypes.func.isRequired,
+    content: PropTypes.string.isRequired,
+    updateContent: PropTypes.func.isRequired,
 };

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './CreateAssignmentForm.css';
 import {Button, Form} from "react-bootstrap";
+import { withRouter } from 'react-router-dom';
 import {CreateAssignment} from "../../../services/AssignmentServices";
 import TextEditorContainer from "../../TextEditor/TextEditorContainer";
 
-export default class CreateAssignmentForm extends Component {
+class CreateAssignmentForm extends Component {
     constructor(props) {
         super(props);
 
@@ -30,6 +31,7 @@ export default class CreateAssignmentForm extends Component {
         e.preventDefault();
         CreateAssignment(this.state.assignmentName, this.state.readmeContent).then(res => {
            console.log('result:', res);
+            this.props.history.push('/home');
         });
     }
 
@@ -54,11 +56,11 @@ export default class CreateAssignmentForm extends Component {
 
                 <TextEditorContainer
                     mode={'markdown'}
-                    code={this.state.code}
-                    updateCode={this.updateCode}
+                    content={this.state.readmeContent}
+                    updateContent={this.updateContent}
                 />
 
-                <div className={'float-right padding-top-sm padding-right-sm'}>
+                <div className={'float-right padding-top-sm padding-right-sm padding-bottom-sm'}>
                     <Button
                         className={'btn-success'}
                         type={'submit'}
@@ -70,3 +72,5 @@ export default class CreateAssignmentForm extends Component {
         );
     }
 }
+
+export default withRouter(CreateAssignmentForm);

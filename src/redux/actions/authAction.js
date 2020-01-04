@@ -56,7 +56,6 @@ export function Login(user) {
         dispatch(loginRequest(user));
         dispatch(loginSuccess(user));
         localStorage.setItem('token', 'abc');
-        GetAssignments();
     }
 }
 

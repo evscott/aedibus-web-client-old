@@ -9,3 +9,7 @@
 .CodeMirror {
     height: 100%;
 }
+
+.padding-bottom-sm {
+    padding-bottom: 5px;
+}

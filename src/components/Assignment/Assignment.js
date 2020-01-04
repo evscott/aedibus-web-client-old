@@ -4,6 +4,7 @@ import {Button} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "./Readme/ReadmeContainer";
 import TextEditorContainer from "../TextEditor/TextEditorContainer";
+import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
 
 class Assignment extends Component {
     constructor(props) {
@@ -11,13 +12,13 @@ class Assignment extends Component {
 
         this.state = {
             assignment: this.props.location.state.assignment,
-            code: `// @author: ${this.props.location.state.userFirstName} ${this.props.location.state.userLastName}\n`,
+            content: `// @author: ${this.props.location.state.userFirstName} ${this.props.location.state.userLastName}\n`,
             readOnly: false,
             mode: 'javascript',
         };
 
         this.handleBack = this.handleBack.bind(this);
-        this.updateCode = this.updateCode.bind(this);
+        this.updateContent = this.updateContent.bind(this);
     }
 
     handleBack(e) {
@@ -25,9 +26,9 @@ class Assignment extends Component {
         this.props.history.push('/home');
     }
 
-    updateCode(newCode) {
+    updateContent(newContent) {
         this.setState({
-            code: newCode,
+            content: newContent,
         });
     }
 
@@ -35,8 +36,11 @@ class Assignment extends Component {
         return (
             <div>
                 <div>
-                    <div className={'padding-left-sm'}>
+                    <div className={'padding-left-sm display-inline'}>
                         <Button className={'btn btn-light'} onClick={this.handleBack}> Back </Button>
+                    </div>
+                    <div className={'float-right display-inline'}>
+                        <DeleteButtonContainer assignmentName={this.state.assignment.name}/>
                     </div>
                     <div>
                         <h2 className={'horizontally-center'}>
@@ -53,11 +57,11 @@ class Assignment extends Component {
 
                 <TextEditorContainer
                     mode={'javascript'}
-                    code={this.state.code}
-                    updateCode={this.updateCode}
+                    content={this.state.content}
+                    updateContent={this.updateContent}
                 />
 
-                <div className={'float-right padding-top-sm padding-bottom-sm padding-right-sm'}>
+                <div className={'float-right padding-top-sm padding-bottom-sm padding-right-md'}>
                     <Button className={"btn-success"}>Submit</Button>
                 </div>
             </div>

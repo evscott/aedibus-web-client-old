@@ -19,7 +19,6 @@ export default class AssignmentList extends Component {
 
     render() {
         if (this.state.assignment) {
-            console.log(this.props.userFirstName);
             return <Redirect to={{
                 pathname: `/assignment`,
                 state: {

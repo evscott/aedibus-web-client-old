@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import Dashboard from "./Dashboard";
+import {GetAssignments} from "../../redux/actions/assignmentAction";
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +12,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        GetAssignments: () => {
+            dispatch(GetAssignments());
+        },
+    };
 };
 
 const DashboardContainer = connect(
