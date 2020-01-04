@@ -3,8 +3,8 @@ import Dashboard from "./Dashboard";
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.user.isAuthenticated,
-        isFetching: state.user.isFetching,
+        isAuthenticated: state.auth.isAuthenticated,
+        isFetching: state.auth.isFetching,
         firstName: state.user.firstName,
         lastName: state.user.lastName,
     }

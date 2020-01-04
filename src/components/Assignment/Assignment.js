@@ -3,30 +3,21 @@ import './Assignment.css'
 import {Button} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "./Readme/ReadmeContainer";
-import CodeMirror from 'react-codemirror';
-import 'codemirror/lib/codemirror.css'
-require('codemirror/mode/javascript/javascript');
-require('codemirror/theme/material.css');
+import TextEditorContainer from "../TextEditor/TextEditorContainer";
 
 class Assignment extends Component {
     constructor(props) {
         super(props);
 
-        console.log('in component', this.props.firstName);
-
         this.state = {
             assignment: this.props.location.state.assignment,
-            code: `// @author \n// @date \n`,
+            code: `// @author: ${this.props.location.state.userFirstName} ${this.props.location.state.userLastName}\n`,
             readOnly: false,
             mode: 'javascript',
         };
 
         this.handleBack = this.handleBack.bind(this);
         this.updateCode = this.updateCode.bind(this);
-    }
-
-    componentDidMount() {
-        console.log('component mounted', this.props);
     }
 
     handleBack(e) {
@@ -41,13 +32,6 @@ class Assignment extends Component {
     }
 
     render() {
-        let options = {
-            lineNumbers: true,
-            readOnly: this.state.readOnly,
-            mode: this.state.mode,
-            theme: 'material',
-        };
-
         return (
             <div>
                 <div>
@@ -60,16 +44,19 @@ class Assignment extends Component {
                         </h2>
                     </div>
                 </div>
+
                 <div className={'margin-bottom-sm'}>
-                    <ReadmeContainer assignmentName={this.state.assignment.name}/>
+                    <ReadmeContainer
+                        assignmentName={this.state.assignment.name}
+                        readmeContent={this.state.assignment.readmeContent}/>
                 </div>
-                <div className={'border-sm'}>
-                    <CodeMirror
-                        className={'create-assignment-height'}
-                        value={this.state.code}
-                        onChange={this.updateCode}
-                        options={options} />
-                </div>
+
+                <TextEditorContainer
+                    mode={'javascript'}
+                    code={this.state.code}
+                    updateCode={this.updateCode}
+                />
+
                 <div className={'float-right padding-top-sm padding-bottom-sm padding-right-sm'}>
                     <Button className={"btn-success"}>Submit</Button>
                 </div>

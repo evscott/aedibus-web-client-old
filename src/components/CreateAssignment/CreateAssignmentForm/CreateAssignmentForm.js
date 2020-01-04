@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import './CreateAssignmentForm.css';
 import {Button, Form} from "react-bootstrap";
-import CodeMirror from 'react-codemirror';
-import 'codemirror/lib/codemirror.css'
 import {CreateAssignment} from "../../../services/AssignmentServices";
-
-require('codemirror/mode/javascript/javascript');
-require('codemirror/mode/xml/xml');
-require('codemirror/mode/markdown/markdown');
-require('codemirror/theme/material.css');
+import TextEditorContainer from "../../TextEditor/TextEditorContainer";
 
 export default class CreateAssignmentForm extends Component {
     constructor(props) {
@@ -46,13 +40,6 @@ export default class CreateAssignmentForm extends Component {
     }
 
     render() {
-        let options = {
-            lineNumbers: true,
-            readOnly: this.state.readOnly,
-            mode: this.state.mode,
-            theme: 'material'
-        };
-
         return (
             <Form.Group className={''}>
                 <div>
@@ -65,12 +52,17 @@ export default class CreateAssignmentForm extends Component {
                         onChange={this.handleChange}/>
                 </div>
 
-                <div className={'border-sm'}>
-                    <CodeMirror className={'create-assignment-height'} value={this.state.readmeContent} onChange={this.updateContent} options={options} />
-                </div>
+                <TextEditorContainer
+                    mode={'markdown'}
+                    code={this.state.code}
+                    updateCode={this.updateCode}
+                />
 
                 <div className={'float-right padding-top-sm padding-right-sm'}>
-                    <Button className={'btn-success'} type={'submit'} onClick={this.handleSubmit}>
+                    <Button
+                        className={'btn-success'}
+                        type={'submit'}
+                        onClick={this.handleSubmit}>
                         Create
                     </Button>
                 </div>

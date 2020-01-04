@@ -11,9 +11,7 @@ export async function GetReadme(assignmentName) {
     return res.json();
 }
 
-export async function CreateAssignment(assignmentName, readmeContents) {
-    console.log("creating assignment:", assignmentName, readmeContents);
-
+export async function CreateAssignment(assignmentName, readmeContent) {
     return await fetch(`//127.0.0.1:8080/assignment`, {
         headers: {
             'Content-Type': 'application/json'
@@ -21,7 +19,7 @@ export async function CreateAssignment(assignmentName, readmeContents) {
         method: 'POST',
         body: JSON.stringify({
             assignmentName: assignmentName,
-            readmeContents: readmeContents,
+            readmeContent: readmeContent,
         }),
     });
 }

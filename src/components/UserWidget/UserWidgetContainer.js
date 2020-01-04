@@ -5,7 +5,7 @@ const mapStateToProps = (state) => {
     return {
         firstName: state.user.firstName,
         lastName: state.user.lastName,
-        isAuthenticated: state.user.isAuthenticated,
+        isAuthenticated: state.auth.isAuthenticated,
     };
 };
 

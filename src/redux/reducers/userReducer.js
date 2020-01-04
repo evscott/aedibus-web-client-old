@@ -1,45 +1,29 @@
-import * as UserActions from '../actions/userAction';
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from "../actions/authAction";
 
 const initialState = {
     lastUpdated: null,
-    isAuthenticated: false,
-    isFetching: null,
+    isFetching: false,
     firstName: '',
     lastName: ''
 };
 
 export function userReducer(state = initialState, action) {
     switch (action.type) {
-        case UserActions.LOGIN_REQUEST:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 lastUpdated: action.lastUpdated,
-                isAuthenticated: action.isAuthenticated,
                 isFetching: action.isFetching,
+                firstName: action.user.firstName,
+                lastName: action.user.lastName
             };
-        case UserActions.LOGIN_SUCCESS:
+        case LOGOUT_SUCCESS:
             return {
                 ...state,
                 lastUpdated: action.lastUpdated,
-                isAuthenticated: action.isAuthenticated,
                 isFetching: action.isFetching,
-                firstName: action.firstName,
-                lastName: action.lastName
-            };
-        case UserActions.LOGOUT_REQUEST:
-            return {
-                ...state,
-                lastUpdated: action.lastUpdated,
-                isFetching: action.isFetching
-            };
-        case UserActions.LOGOUT_SUCCESS:
-            return {
-                ...state,
-                lastUpdated: action.lastUpdated,
-                isAuthenticated: action.isAuthenticated,
-                isFetching: action.isFetching,
-                firstName: action.firstName,
-                lastName: action.lastName
+                firstName: action.user.firstName,
+                lastName: action.user.lastName,
             };
         default:
             return state;
