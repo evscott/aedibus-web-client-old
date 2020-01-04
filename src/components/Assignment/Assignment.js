@@ -3,8 +3,9 @@ import './Assignment.css'
 import {Button} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "./Readme/ReadmeContainer";
-import TextEditorContainer from "../TextEditor/TextEditorContainer";
+import TextEditorContainer from "../Shared/TextEditor/TextEditorContainer";
 import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
+import BackButtonContainer from "../Shared/BackButton/BackButtonContainer";
 
 class Assignment extends Component {
     constructor(props) {
@@ -17,13 +18,7 @@ class Assignment extends Component {
             mode: 'javascript',
         };
 
-        this.handleBack = this.handleBack.bind(this);
         this.updateContent = this.updateContent.bind(this);
-    }
-
-    handleBack(e) {
-        e.preventDefault();
-        this.props.history.push('/home');
     }
 
     updateContent(newContent) {
@@ -35,18 +30,18 @@ class Assignment extends Component {
     render() {
         return (
             <div>
+                <div className={'padding-left-sm display-inline'}>
+                    <BackButtonContainer path={'/home'}/>
+                </div>
+
+                <div className={'float-right display-inline'}>
+                    <DeleteButtonContainer assignmentName={this.state.assignment.name}/>
+                </div>
+
                 <div>
-                    <div className={'padding-left-sm display-inline'}>
-                        <Button className={'btn btn-light'} onClick={this.handleBack}> Back </Button>
-                    </div>
-                    <div className={'float-right display-inline'}>
-                        <DeleteButtonContainer assignmentName={this.state.assignment.name}/>
-                    </div>
-                    <div>
-                        <h2 className={'horizontally-center'}>
-                            <span> {this.state.assignment.name} </span>
-                        </h2>
-                    </div>
+                    <h2 className={'horizontally-center'}>
+                        <span> {this.state.assignment.name} </span>
+                    </h2>
                 </div>
 
                 <div className={'margin-bottom-sm'}>

@@ -2,8 +2,12 @@
     padding-left: 5px;
 }
 
+.padding-top-sm {
+    padding-top: 5px;
+}
+
 .padding-top-md {
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .position-middle {
