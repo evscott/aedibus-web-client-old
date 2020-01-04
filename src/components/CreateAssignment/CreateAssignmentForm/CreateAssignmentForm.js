@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import './CreateAssignmentForm.css';
 import {Button, Form} from "react-bootstrap";
-import CodeMirror from 'react-codemirror';
-import 'codemirror/lib/codemirror.css'
+import { withRouter } from 'react-router-dom';
+import {CreateAssignment} from "../../../services/AssignmentServices";
+import TextEditorContainer from "../../TextEditor/TextEditorContainer";
 
-export default class CreateAssignmentForm extends Component {
+class CreateAssignmentForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             assignmentName: '',
-            readme: '',
-            code: ''
+            readmeContent: '',
+            readOnly: false,
+            mode: 'markdown',
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.updateCode = this.updateCode.bind(this);
+        this.updateContent = this.updateContent.bind(this);
     }
 
     handleChange(e) {
@@ -27,21 +29,19 @@ export default class CreateAssignmentForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        CreateAssignment(this.state.assignmentName, this.state.readmeContent).then(res => {
+           console.log('result:', res);
+            this.props.history.push('/home');
+        });
     }
 
-    updateCode(newCode) {
+    updateContent(newContent) {
         this.setState({
-            code: newCode,
+            readmeContent: newContent,
         });
     }
 
     render() {
-
-        let options = {
-            lineNumbers: true,
-            mode: 'javascript',
-        };
-
         return (
             <Form.Group className={''}>
                 <div>
@@ -54,12 +54,17 @@ export default class CreateAssignmentForm extends Component {
                         onChange={this.handleChange}/>
                 </div>
 
-                <div className={'border-sm'}>
-                    <CodeMirror className={'create-assignment-height'} value={this.state.code} onChange={this.updateCode} options={options} />
-                </div>
+                <TextEditorContainer
+                    mode={'markdown'}
+                    content={this.state.readmeContent}
+                    updateContent={this.updateContent}
+                />
 
-                <div className={'float-right padding-top-sm padding-right-sm'}>
-                    <Button className={'btn-success'} type={'submit'} onClick={this.handleSubmit}>
+                <div className={'float-right padding-top-sm padding-right-sm padding-bottom-sm'}>
+                    <Button
+                        className={'btn-success'}
+                        type={'submit'}
+                        onClick={this.handleSubmit}>
                         Create
                     </Button>
                 </div>
@@ -67,3 +72,5 @@ export default class CreateAssignmentForm extends Component {
         );
     }
 }
+
+export default withRouter(CreateAssignmentForm);

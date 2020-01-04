@@ -15,6 +15,10 @@ class Dashboard extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount() {
+        this.props.GetAssignments();
+    }
+
     handleClick() {
         this.props.history.push('/assigment/create');
     }

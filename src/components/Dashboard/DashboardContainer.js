@@ -1,17 +1,22 @@
 import { connect } from 'react-redux'
 import Dashboard from "./Dashboard";
+import {GetAssignments} from "../../redux/actions/assignmentAction";
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.user.isAuthenticated,
-        isFetching: state.user.isFetching,
+        isAuthenticated: state.auth.isAuthenticated,
+        isFetching: state.auth.isFetching,
         firstName: state.user.firstName,
         lastName: state.user.lastName,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        GetAssignments: () => {
+            dispatch(GetAssignments());
+        },
+    };
 };
 
 const DashboardContainer = connect(

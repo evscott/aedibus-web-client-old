@@ -1,4 +1,5 @@
 import * as AssignmentActions from '../actions/assignmentAction';
+import {LOGOUT_SUCCESS} from "../actions/authAction";
 
 const initialState = {
     lastUpdated: null,
@@ -20,6 +21,13 @@ export function assignmentReducer(state = initialState, action) {
                 lastUpdated: action.lastUpdated,
                 isFetching: action.isFetching,
                 list: action.list,
+            };
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                lastUpdated: action.lastUpdated,
+                isFetching: action.isFetching,
+                list: action.assignments.list,
             };
         default:
             return state;

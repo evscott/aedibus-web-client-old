@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './Assignment.css'
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "./Readme/ReadmeContainer";
-import CodeMirror from 'react-codemirror';
-import 'codemirror/lib/codemirror.css'
+import TextEditorContainer from "../TextEditor/TextEditorContainer";
+import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
 
 class Assignment extends Component {
     constructor(props) {
@@ -12,11 +12,13 @@ class Assignment extends Component {
 
         this.state = {
             assignment: this.props.location.state.assignment,
-            code: ''
+            content: `// @author: ${this.props.location.state.userFirstName} ${this.props.location.state.userLastName}\n`,
+            readOnly: false,
+            mode: 'javascript',
         };
 
         this.handleBack = this.handleBack.bind(this);
-        this.updateCode = this.updateCode.bind(this);
+        this.updateContent = this.updateContent.bind(this);
     }
 
     handleBack(e) {
@@ -24,23 +26,21 @@ class Assignment extends Component {
         this.props.history.push('/home');
     }
 
-    updateCode(newCode) {
+    updateContent(newContent) {
         this.setState({
-            code: newCode,
+            content: newContent,
         });
     }
 
     render() {
-        let options = {
-            lineNumbers: true,
-            mode: 'javascript',
-        };
-
         return (
             <div>
                 <div>
-                    <div className={'padding-left-sm'}>
+                    <div className={'padding-left-sm display-inline'}>
                         <Button className={'btn btn-light'} onClick={this.handleBack}> Back </Button>
+                    </div>
+                    <div className={'float-right display-inline'}>
+                        <DeleteButtonContainer assignmentName={this.state.assignment.name}/>
                     </div>
                     <div>
                         <h2 className={'horizontally-center'}>
@@ -48,13 +48,20 @@ class Assignment extends Component {
                         </h2>
                     </div>
                 </div>
-                <div className={'border-sm light-grey margin-bottom-sm'}>
-                    <ReadmeContainer assignmentName={this.state.assignment.name}/>
+
+                <div className={'margin-bottom-sm'}>
+                    <ReadmeContainer
+                        assignmentName={this.state.assignment.name}
+                        readmeContent={this.state.assignment.readmeContent}/>
                 </div>
-                <div className={'border-sm'}>
-                    <CodeMirror className={'codemirror-height'} value={this.state.code} onChange={this.updateCode} options={options} />
-                </div>
-                <div className={'float-right padding-top-sm padding-bottom-sm padding-right-sm'}>
+
+                <TextEditorContainer
+                    mode={'javascript'}
+                    content={this.state.content}
+                    updateContent={this.updateContent}
+                />
+
+                <div className={'float-right padding-top-sm padding-bottom-sm padding-right-md'}>
                     <Button className={"btn-success"}>Submit</Button>
                 </div>
             </div>

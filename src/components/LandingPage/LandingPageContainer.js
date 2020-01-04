@@ -3,8 +3,8 @@ import LandingPage from "./LandingPage";
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.user.isAuthenticated,
-        isFetching: state.user.isFetching,
+        isAuthenticated: state.auth.isAuthenticated,
+        isFetching: state.auth.isFetching,
     }
 };
 

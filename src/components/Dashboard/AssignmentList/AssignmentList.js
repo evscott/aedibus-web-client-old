@@ -6,7 +6,10 @@ import './AssignmentList.css'
 export default class AssignmentList extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            assignments: [],
+        };
+
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -18,7 +21,11 @@ export default class AssignmentList extends Component {
         if (this.state.assignment) {
             return <Redirect to={{
                 pathname: `/assignment`,
-                state: {assignment: this.state.assignment}
+                state: {
+                    assignment: this.state.assignment,
+                    userFirstName: this.props.userFirstName,
+                    userLastName: this.props.userLastName,
+                }
             }} />
         }
         return (
