@@ -6,6 +6,7 @@ import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
 import BackButtonContainer from "../../Shared/BackButton/BackButtonContainer";
 import {GetDropboxList} from "../../../services/DropboxServices";
 import DropboxListContainer from "./DropboxList/DropboxListContainer";
+import CreateDropboxFormContainer from "./CreateDropboxForm/CreateDropboxFormContainer";
 
 class TeacherAssignment extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class TeacherAssignment extends Component {
 
         this.componentDidMount = this.componentDidMount.bind(this);
         this.updateContent = this.updateContent.bind(this);
+        this.refresh = this.refresh.bind(this);
     }
 
     componentDidMount() {
@@ -30,6 +32,13 @@ class TeacherAssignment extends Component {
     updateContent(newContent) {
         this.setState({
             content: newContent,
+        });
+    }
+
+    refresh() {
+        GetDropboxList(this.state.assignment.name).then(res => {
+            this.setState({dropboxList: res.list});
+            console.log(this.state);
         });
     }
 
@@ -60,6 +69,10 @@ class TeacherAssignment extends Component {
                         <span> Dropboxes </span>
                     </h3>
                     <DropboxListContainer dropboxList={this.state.dropboxList}/>
+                </div>
+
+                <div>
+                    <CreateDropboxFormContainer assignmentName={this.state.assignment.name} onClick={this.refresh}/>
                 </div>
             </div>
         )

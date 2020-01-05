@@ -29,6 +29,7 @@ class DropboxList extends Component {
                             {dropbox.Name}
                         </ListGroup.Item>)
                 }
+
             </ListGroup>
         )
     }
