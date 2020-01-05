@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Assignment from "./Assignment";
+import Assignment from "./StudentAssignment";
 
 const mapStateToProps = (state) => {
     return {};
@@ -9,9 +9,9 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-const AssignmentContainer = connect(
+const StudentAssignmentContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(Assignment);
 
-export default AssignmentContainer;
+export default StudentAssignmentContainer;

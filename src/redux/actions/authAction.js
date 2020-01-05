@@ -45,6 +45,9 @@ function logoutSuccess() {
         },
         assignments: {
             list: []
+        },
+        dropbox: {
+            list: []
         }
     }
 }

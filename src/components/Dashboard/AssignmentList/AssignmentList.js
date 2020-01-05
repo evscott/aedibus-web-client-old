@@ -12,27 +12,20 @@ class AssignmentList extends Component {
         };
 
         this.handleCreateAssignment = this.handleCreateAssignment.bind(this);
-        this.handleAssignmentClick = this.handleAssignmentClick.bind(this);
+        this.showCreateAssignment = this.showCreateAssignment.bind(this);
     }
 
     handleCreateAssignment() {
         this.props.history.push('/assigment/create');
     }
 
-    handleAssignmentClick(assignment) {
-        if (this.props.firstName === "Eliot") {
-            this.props.toggleListForward(assignment);
-        }
-
-        if (this.props.firstName !== "Eliot")
-            this.props.history.push({
-                pathname: `/assignment`,
-                state: {
-                    assignment: assignment,
-                    firstName: this.props.firstName,
-                    lastName: this.props.lastName,
-                }
-            });
+    showCreateAssignment() {
+        if (this.props.firstName === "teacher")
+            return (
+                <div className={'float-right padding-top-sm'}>
+                    <Button className={'btn-success'} onClick={this.handleCreateAssignment}>+</Button>
+                </div>
+            )
     }
 
     render() {
@@ -41,21 +34,19 @@ class AssignmentList extends Component {
                 <ListGroup defaultActiveKey="#link1">
                     {
                         this.props.assignments.map(a =>
-                            <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.handleAssignmentClick(a)}>
+                            <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.props.handleAssignmentClick(a)}>
                                 {a.name}
                             </ListGroup.Item>)
                     }
                 </ListGroup>
-                <div className={'float-right padding-top-sm'}>
-                    <Button className={'btn-success'} onClick={this.handleCreateAssignment}>+</Button>
-                </div>
+                { this.showCreateAssignment() }
             </div>
         )
     }
 }
 
 AssignmentList.propTypes = {
-    toggleListForward: PropTypes.func.isRequired,
+    handleAssignmentClick: PropTypes.func.isRequired,
 };
 
 export default withRouter(AssignmentList);

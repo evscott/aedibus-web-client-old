@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import './Assignment.css'
+import './StudentAssignment.css'
 import {Button} from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
-import ReadmeContainer from "./Readme/ReadmeContainer";
-import TextEditorContainer from "../Shared/TextEditor/TextEditorContainer";
-import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
-import BackButtonContainer from "../Shared/BackButton/BackButtonContainer";
+import ReadmeContainer from "../Readme/ReadmeContainer";
+import TextEditorContainer from "../../Shared/TextEditor/TextEditorContainer";
+import BackButtonContainer from "../../Shared/BackButton/BackButtonContainer";
 
-class Assignment extends Component {
+class StudentAssignment extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             assignment: this.props.location.state.assignment,
-            content: `// @author: ${this.props.location.state.userFirstName} ${this.props.location.state.userLastName}\n`,
+            content: `// @author: ${this.props.location.state.firstName} ${this.props.location.state.lastName}\n`,
             readOnly: false,
             mode: 'javascript',
         };
@@ -32,10 +31,6 @@ class Assignment extends Component {
             <div>
                 <div className={'padding-left-sm display-inline'}>
                     <BackButtonContainer path={'/home'}/>
-                </div>
-
-                <div className={'float-right display-inline'}>
-                    <DeleteButtonContainer assignmentName={this.state.assignment.name}/>
                 </div>
 
                 <div>
@@ -64,7 +59,7 @@ class Assignment extends Component {
     }
 }
 
-Assignment.propTypes = {
+StudentAssignment.propTypes = {
 };
 
-export default withRouter(Assignment)
+export default withRouter(StudentAssignment)
