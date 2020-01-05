@@ -1,45 +1,52 @@
 import React, { Component } from 'react'
-import { ListGroup } from "react-bootstrap";
-import { Redirect } from 'react-router-dom';
+import {Button, ListGroup} from "react-bootstrap";
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import './AssignmentList.css'
 
-export default class AssignmentList extends Component {
+class AssignmentList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             assignments: [],
         };
 
-        this.handleClick = this.handleClick.bind(this);
+        this.handleCreateAssignment = this.handleCreateAssignment.bind(this);
+        this.showCreateAssignment = this.showCreateAssignment.bind(this);
     }
 
-    handleClick(target) {
-        this.setState({assignment: target});
+    handleCreateAssignment() {
+        this.props.history.push('/assigment/create');
+    }
+
+    showCreateAssignment() {
+        if (this.props.firstName === "teacher")
+            return (
+                <div className={'float-right padding-top-sm'}>
+                    <Button className={'btn-success'} onClick={this.handleCreateAssignment}>+</Button>
+                </div>
+            )
     }
 
     render() {
-        if (this.state.assignment) {
-            return <Redirect to={{
-                pathname: `/assignment`,
-                state: {
-                    assignment: this.state.assignment,
-                    userFirstName: this.props.userFirstName,
-                    userLastName: this.props.userLastName,
-                }
-            }} />
-        }
         return (
-            <ListGroup defaultActiveKey="#link1">
-                {
-                    this.props.assignments.map(a =>
-                        <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.handleClick(a)}>
-                            {a.name}
-                        </ListGroup.Item>)
-                }
-            </ListGroup>
+            <div>
+                <ListGroup defaultActiveKey="#link1">
+                    {
+                        this.props.assignments.map(a =>
+                            <ListGroup.Item key={a.id} name={a.name} action onClick={() => this.props.handleAssignmentClick(a)}>
+                                {a.name}
+                            </ListGroup.Item>)
+                    }
+                </ListGroup>
+                { this.showCreateAssignment() }
+            </div>
         )
     }
 }
 
 AssignmentList.propTypes = {
+    handleAssignmentClick: PropTypes.func.isRequired,
 };
+
+export default withRouter(AssignmentList);

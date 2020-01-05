@@ -1,38 +1,49 @@
 import React, {Component} from "react";
-import './Dashboard.css'
 import { withRouter } from 'react-router-dom';
+import './Dashboard.css'
 import AssignmentListContainer from "./AssignmentList/AssignmentListContainer";
-import {Button} from "react-bootstrap";
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            createAssignment: false,
-        };
-
-        this.handleClick = this.handleClick.bind(this);
+        this.handleAssignmentClick = this.handleAssignmentClick.bind(this);
     }
 
     componentDidMount() {
         this.props.GetAssignments();
     }
 
-    handleClick() {
-        this.props.history.push('/assigment/create');
+    handleAssignmentClick(assignment) {
+        if (this.props.firstName === "teacher") {
+            this.props.history.push({
+                pathname: '/assignment/teacher',
+                state: {
+                    assignment: assignment,
+                }
+            });
+        }
+        else {
+            this.props.history.push({
+                pathname: '/assignment/student',
+                state: {
+                    assignment: assignment,
+                    firstName: this.props.firstName,
+                    lastName: this.props.lastName,
+                }
+            });
+        }
     }
 
     render() {
         return (
             <div className={'width-half position-middle'}>
-                <AssignmentListContainer/>
-                <div className={'float-right padding-top-sm'}>
-                    <Button className={'btn-success'} onClick={this.handleClick}>+</Button>
-                </div>
+                <h3>
+                    <span> Assignments </span>
+                </h3>
+                <AssignmentListContainer handleAssignmentClick={this.handleAssignmentClick}/>
             </div>
-        );
+        )
     }
 }
 
-export default  withRouter(Dashboard);
+export default withRouter(Dashboard);

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Dashboard from "./Dashboard";
-import {GetAssignments} from "../../redux/actions/assignmentAction";
+import {GetAssignments} from "../../Redux/actions/assignmentAction";
 
 const mapStateToProps = (state) => {
     return {

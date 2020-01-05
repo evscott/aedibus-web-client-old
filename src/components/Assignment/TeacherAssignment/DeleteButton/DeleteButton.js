@@ -3,7 +3,7 @@ import './DeleteButton.css'
 import { withRouter } from 'react-router-dom';
 import {Button} from "react-bootstrap";
 import PropTypes from 'prop-types';
-import {DeleteAssignment} from "../../../services/AssignmentServices";
+import {DeleteAssignment} from "../../../../Services/AssignmentServices";
 
 class DeleteButton extends Component {
     constructor(props) {
