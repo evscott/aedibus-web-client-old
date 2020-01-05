@@ -28,7 +28,6 @@ export default class LoginForm extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName
         });
-        this.props.GetAssignments();
     }
 
 

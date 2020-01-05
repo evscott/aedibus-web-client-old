@@ -14,7 +14,6 @@ export async function CreateAssignment(assignmentName, readmeContent) {
 }
 
 export async function DeleteAssignment(assignmentName) {
-    console.log('assignmentName:', assignmentName);
     return await fetch(`//127.0.0.1:8080/assignment`, {
         headers: {
             'Content-Type': 'application/json'
