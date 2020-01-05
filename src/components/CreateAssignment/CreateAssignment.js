@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './CreateAssignment.css';
 import {Button} from "react-bootstrap";
-import { CreateAssignment as CreateAssignmentFunc } from "../../services/AssignmentServices";
+import { CreateAssignment as CreateAssignmentFunc } from "../../Services/AssignmentServices";
 import CreateAssignmentFormContainer from "./CreateAssignmentForm/CreateAssignmentFormContainer";
 import BackButtonContainer from "../Shared/BackButton/BackButtonContainer";
 import TextEditorContainer from "../Shared/TextEditor/TextEditorContainer";

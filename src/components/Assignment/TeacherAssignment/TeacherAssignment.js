@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "../../Shared/Readme/ReadmeContainer";
 import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
 import BackButtonContainer from "../../Shared/BackButton/BackButtonContainer";
-import {GetDropboxList} from "../../../services/DropboxServices";
+import {GetDropboxList} from "../../../Services/DropboxServices";
 import DropboxListContainer from "./DropboxList/DropboxListContainer";
 import CreateDropboxFormContainer from "./CreateDropboxForm/CreateDropboxFormContainer";
 
