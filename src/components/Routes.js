@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import LandingPageContainer from "./LandingPage/LandingPageContainer";
 import DashboardContainer from "./Dashboard/DashboardContainer";
-import StudentAssignmentContainer from "./Assignment/StudentAssignment/StudentAssignmentContainer";
-import TeacherAssignmentContainer from "./Assignment/TeacherAssignment/TeacherAssignmentContainer";
+import StudentAssignmentContainer from "./AssignmentView/StudentView/StudentAssignmentContainer";
+import TeacherAssignmentContainer from "./AssignmentView/TeacherView/TeacherAssignmentContainer";
 import CreateAssignmentContainer from "./CreateAssignment/CreateAssignmentContainer";
 
 const AuthenticatedRoute = ({ component: Component, ...rest}) => {

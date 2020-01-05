@@ -54,10 +54,13 @@ class TeacherAssignment extends Component {
                     assignmentName={this.state.assignment.name}
                     readmeContent={this.state.assignment.readmeContent}/>
 
-                <h1>
-                    <span> Dropboxes </span>
-                </h1>
-                <DropboxListContainer dropboxList={this.state.dropboxList}/>
+
+                <div className={'width-half padding-top-md'}>
+                    <h3>
+                        <span> Dropboxes </span>
+                    </h3>
+                    <DropboxListContainer dropboxList={this.state.dropboxList}/>
+                </div>
             </div>
         )
     }

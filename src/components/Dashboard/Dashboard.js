@@ -14,14 +14,15 @@ class Dashboard extends Component {
     }
 
     handleAssignmentClick(assignment) {
-        if (this.props.firstName === "teacher")
+        if (this.props.firstName === "teacher") {
             this.props.history.push({
                 pathname: '/assignment/teacher',
                 state: {
                     assignment: assignment,
                 }
             });
-        else
+        }
+        else {
             this.props.history.push({
                 pathname: '/assignment/student',
                 state: {
@@ -30,11 +31,15 @@ class Dashboard extends Component {
                     lastName: this.props.lastName,
                 }
             });
+        }
     }
 
     render() {
         return (
             <div className={'width-half position-middle'}>
+                <h3>
+                    <span> Assignments </span>
+                </h3>
                 <AssignmentListContainer handleAssignmentClick={this.handleAssignmentClick}/>
             </div>
         )

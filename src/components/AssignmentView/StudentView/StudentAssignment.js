@@ -52,7 +52,7 @@ class StudentAssignment extends Component {
                 />
 
                 <div className={'float-right padding-top-sm padding-bottom-sm padding-right-md'}>
-                    <Button className={"btn-success"}>Submit</Button>
+                    <Button className={"btn-success"}>Save</Button>
                 </div>
             </div>
         )
