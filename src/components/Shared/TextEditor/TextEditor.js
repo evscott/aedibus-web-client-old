@@ -12,6 +12,7 @@ export default class TextEditor extends Component {
             lineNumbers: true,
             mode: this.props.mode,
             theme: 'material',
+            readOnly: this.props.readOnly,
         };
 
         return (
@@ -29,5 +30,6 @@ export default class TextEditor extends Component {
 TextEditor.propTypes = {
     mode: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    readOnly: PropTypes.bool.isRequired,
     updateContent: PropTypes.func.isRequired,
 };

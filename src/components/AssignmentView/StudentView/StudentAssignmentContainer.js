@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import Assignment from "./StudentAssignment";
 
 const mapStateToProps = (state) => {
-    return {};
+    return {
+        firstName: state.user.firstName,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {

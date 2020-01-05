@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './CreateDropboxForm.css'
 import PropTypes from 'prop-types';
 import { InputGroup, FormControl, Button } from "react-bootstrap";
-import {CreateDropbox, GetDropboxList} from "../../../../services/DropboxServices";
+import {CreateDropbox} from "../../../../services/DropboxServices";
 
 export default class CreateDropboxForm extends Component {
     constructor(props) {
