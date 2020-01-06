@@ -30,7 +30,7 @@ export default class CreateAssignment extends Component {
 
     handleSubmit() {
         CreateAssignmentFunc(this.state.assignmentName, this.state.readmeContent).then(res => {
-            console.log('result:', res);
+            console.log(res);
             this.props.history.push('/home');
         });
     }
@@ -48,21 +48,16 @@ export default class CreateAssignment extends Component {
                     <BackButtonContainer path={'/home'}/>
                 </div>
 
-                <div className={'padding-top-md'}>
+                <div className={'padding-top-md create-assignment-name'}>
                     <CreateAssignmentFormContainer assignmentName={this.state.assignmentName} handleChange={this.handleChange}/>
                 </div>
 
-                <TextEditorContainer
-                    mode={'markdown'}
-                    content={this.state.readmeContent}
-                    updateContent={this.updateContent}
-                />
+                <div className={'text-editor'}>
+                    <TextEditorContainer mode={this.state.mode} content={this.state.readmeContent} readOnly={false} updateContent={this.updateContent}/>
+                </div>
 
-                <div className={'float-right padding-top-sm padding-right-sm padding-bottom-sm'}>
-                    <Button
-                        className={'btn-success'}
-                        type={'submit'}
-                        onClick={this.handleSubmit}>
+                <div className={'float-right submit-button'}>
+                    <Button className={'btn-success'} type={'submit'} onClick={this.handleSubmit}>
                         Create
                     </Button>
                 </div>

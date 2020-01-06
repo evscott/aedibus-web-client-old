@@ -5,27 +5,12 @@ import { withRouter } from 'react-router-dom';
 import './DropboxList.css'
 
 class DropboxList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleDropboxClick = this.handleDropboxClick.bind(this);
-    }
-
-    handleDropboxClick(dropbox) {
-        this.props.history.push({
-            pathname: '/dropbox',
-            state: {
-                dropbox: dropbox,
-            }
-        });
-    }
-
     render() {
         return (
             <ListGroup defaultActiveKey="#link1">
                 {
                     this.props.dropboxList.map(dropbox =>
-                        <ListGroup.Item key={dropbox.ID} name={dropbox.Name} action onClick={() => this.handleDropboxClick(dropbox)}>
+                        <ListGroup.Item key={dropbox.ID} name={dropbox.Name}>
                             {dropbox.Name}
                         </ListGroup.Item>)
                 }

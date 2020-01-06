@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import ReadmeContainer from "../../Shared/Readme/ReadmeContainer";
 import DeleteButtonContainer from "./DeleteButton/DeleteButtonContainer";
 import BackButtonContainer from "../../Shared/BackButton/BackButtonContainer";
-import {GetDropboxList} from "../../../Services/DropboxServices";
 import DropboxListContainer from "./DropboxList/DropboxListContainer";
 import CreateDropboxFormContainer from "./CreateDropboxForm/CreateDropboxFormContainer";
 
@@ -16,30 +15,6 @@ class TeacherAssignment extends Component {
             assignment: this.props.location.state.assignment,
             dropboxList: [],
         };
-
-        this.componentDidMount = this.componentDidMount.bind(this);
-        this.updateContent = this.updateContent.bind(this);
-        this.refresh = this.refresh.bind(this);
-    }
-
-    componentDidMount() {
-        GetDropboxList(this.state.assignment.name).then(res => {
-            this.setState({dropboxList: res.list});
-            console.log(this.state);
-        });
-    }
-
-    updateContent(newContent) {
-        this.setState({
-            content: newContent,
-        });
-    }
-
-    refresh() {
-        GetDropboxList(this.state.assignment.name).then(res => {
-            this.setState({dropboxList: res.list});
-            console.log(this.state);
-        });
     }
 
     render() {
@@ -59,20 +34,17 @@ class TeacherAssignment extends Component {
                     </h2>
                 </div>
 
-                <ReadmeContainer
-                    assignmentName={this.state.assignment.name}
-                    readmeContent={this.state.assignment.readmeContent}/>
+                <div className={'teacher-readme'}>
+                    <ReadmeContainer assignmentName={this.state.assignment.name} readmeContent={this.state.assignment.readmeContent}/>
+                </div>
 
 
-                <div className={'width-half padding-top-md'}>
+                <div className={'padding-top-md dropbox-list'}>
                     <h3>
                         <span> Dropboxes </span>
                     </h3>
                     <DropboxListContainer dropboxList={this.state.dropboxList}/>
-                </div>
-
-                <div>
-                    <CreateDropboxFormContainer assignmentName={this.state.assignment.name} onClick={this.refresh}/>
+                    <CreateDropboxFormContainer assignmentName={this.state.assignment.name}/>
                 </div>
             </div>
         )

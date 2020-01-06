@@ -1,12 +1,7 @@
-.light-grey {
-    background-color: lightgray;
-}
-
-.readme-height {
+.readme {
     min-height: 400px;
     height: 100%;
-}
-
-.overflow {
+    background-color: #F5F5F5;
     overflow: auto;
+    padding: 5px;
 }

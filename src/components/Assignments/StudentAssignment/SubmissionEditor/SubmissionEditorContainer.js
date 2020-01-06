@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import Assignment from "./StudentAssignment";
+import Editor from "./SubmissionEditor";
 
 const mapStateToProps = (state) => {
     return {
         firstName: state.user.firstName,
+        lastName: state.user.lastName,
     };
 };
 
@@ -11,9 +12,9 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-const StudentAssignmentContainer = connect(
+const SubmissionEditorContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Assignment);
+)(Editor);
 
-export default StudentAssignmentContainer;
+export default SubmissionEditorContainer;

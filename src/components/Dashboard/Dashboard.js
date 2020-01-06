@@ -14,24 +14,19 @@ class Dashboard extends Component {
     }
 
     handleAssignmentClick(assignment) {
-        if (this.props.firstName === "teacher") {
-            this.props.history.push({
-                pathname: '/assignment/teacher',
-                state: {
-                    assignment: assignment,
-                }
-            });
-        }
-        else {
-            this.props.history.push({
-                pathname: '/assignment/student',
-                state: {
-                    assignment: assignment,
-                    firstName: this.props.firstName,
-                    lastName: this.props.lastName,
-                }
-            });
-        }
+        let path;
+        if (this.props.firstName === "teacher")
+            path = '/assignment/teacher';
+        else
+            path = '/assignment/student';
+
+
+        this.props.history.push({
+            pathname: path,
+            state: {
+                assignment: assignment,
+            }
+        });
     }
 
     render() {

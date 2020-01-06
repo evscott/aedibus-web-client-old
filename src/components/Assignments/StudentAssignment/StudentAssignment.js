@@ -12,29 +12,17 @@ class StudentAssignment extends Component {
 
         this.state = {
             assignment: this.props.location.state.assignment,
-            submission: null,
         };
-
-        this.componentDidMount = this.componentDidMount.bind(this);
-    }
-
-    componentDidMount() {
-
     }
 
     getSubmission() {
         if (this.state.submission)
             return (
-                <SubmissionViewerContainer
-                    content={this.state.submission.content}
-                />
+                <SubmissionViewerContainer content= {"null for now"} />
             );
         else
             return (
-                <SubmissionEditorContainer
-                    assignmentName={this.state.assignment.name}
-                    firstName={this.props.location.state.firstName}
-                    lastName={this.props.location.state.lastName}/>
+                <SubmissionEditorContainer assignmentName={"null for now"}/>
             );
 
     }
@@ -52,11 +40,9 @@ class StudentAssignment extends Component {
                     </h2>
                 </div>
 
-                {<div className={'margin-bottom-sm'}>
-                    <ReadmeContainer
-                        assignmentName={this.state.assignment.name}
-                        readmeContent={this.state.assignment.readmeContent}/>
-                </div>}
+                <div className={'margin-bottom-sm'}>
+                    <ReadmeContainer assignmentName={this.state.assignment.name} readmeContent={this.state.assignment.readmeContent}/>
+                </div>
 
                 {this.getSubmission()}
             </div>

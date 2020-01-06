@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css'
-import UserWidgetContainer from "../UserWidget/UserWidgetContainer";
+import UserWidgetContainer from "./UserWidget/UserWidgetContainer";
 
 export default class Header extends Component {
     render() {

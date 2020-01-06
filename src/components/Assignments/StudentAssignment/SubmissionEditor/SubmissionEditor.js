@@ -3,7 +3,7 @@ import './SubmissionEditor.css'
 import {Button} from "react-bootstrap";
 import PropTypes from 'prop-types';
 import TextEditorContainer from "../../../Shared/TextEditor/TextEditorContainer";
-import {SubmitAssignment} from "../../../../Services/SubmissionServices";
+// import {SubmitAssignment} from "../../../../Services/SubmissionServices";
 
 export default class SubmissionEditor extends Component {
     constructor(props) {
@@ -26,11 +26,11 @@ export default class SubmissionEditor extends Component {
     }
 
     handleSubmit() {
-        console.log(this.state);
-        SubmitAssignment(this.props.assignmentName, this.props.firstName, this.state.content)
-            .then(res => {
-                console.log(res);
-            });
+        console.log("submit assignment");
+        // SubmitAssignment(this.props.assignmentName, this.props.firstName, this.state.content)
+        //     .then(res => {
+        //         console.log(res);
+        //     });
     }
 
     render() {
@@ -53,6 +53,4 @@ export default class SubmissionEditor extends Component {
 
 SubmissionEditor.propTypes = {
     assignmentName: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
 };

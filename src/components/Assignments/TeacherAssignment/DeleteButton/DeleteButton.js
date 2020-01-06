@@ -14,7 +14,7 @@ class DeleteButton extends Component {
 
     handleClick() {
         DeleteAssignment(this.props.assignmentName).then(res => {
-            console.log('result:', res);
+            console.log(res);
             this.props.history.push('/home');
         });
     }

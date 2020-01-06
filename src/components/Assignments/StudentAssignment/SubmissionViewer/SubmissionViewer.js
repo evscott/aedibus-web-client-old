@@ -24,7 +24,6 @@ export default class SubmissionViewer extends Component {
     }
 
     handleSubmit() {
-        console.log(this.state);
         SubmitAssignment(this.props.assignmentName, this.props.firstName, this.state.content)
             .then(res => {
                 console.log(res);

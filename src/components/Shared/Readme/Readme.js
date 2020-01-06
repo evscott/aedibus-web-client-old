@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 export default class Readme extends Component {
     render() {
         return (
-            <div className={'readme-height overflow light-grey border-sm'}>
+            <div className={'readme overflow light-grey border-sm'}>
                 <ReactMarkdown source={this.props.readmeContent} />
             </div>
         )
